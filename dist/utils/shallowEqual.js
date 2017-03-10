@@ -1,8 +1,8 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _moment = require('moment');
 
@@ -18,8 +18,6 @@ var _isMomentRange = require('./isMomentRange');
 
 var _isMomentRange2 = _interopRequireDefault(_isMomentRange);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function shallowEqual(objA, objB) {
   if (objA === objB) {
     return true;
@@ -31,12 +29,12 @@ function shallowEqual(objA, objB) {
     if (objA.hasOwnProperty(key)) {
       if (!objB.hasOwnProperty(key)) {
         return false;
-      } else if (_moment2.default.isMoment(objA[key]) && _moment2.default.isMoment(objB[key])) {
+      } else if (_moment2['default'].isMoment(objA[key]) && _moment2['default'].isMoment(objB[key])) {
         if (!objA[key].isSame(objB[key], 'day')) {
           return false;
         }
-      } else if ((0, _isMomentRange2.default)(objA[key]) && (0, _isMomentRange2.default)(objB[key])) {
-        if (!(0, _areMomentRangesEqual2.default)(objA[key], objB[key])) {
+      } else if ((0, _isMomentRange2['default'])(objA[key]) && (0, _isMomentRange2['default'])(objB[key])) {
+        if (!(0, _areMomentRangesEqual2['default'])(objA[key], objB[key])) {
           return false;
         }
       } else if (objA[key] !== objB[key]) {
@@ -54,4 +52,5 @@ function shallowEqual(objA, objB) {
   return true;
 }
 
-exports.default = shallowEqual;
+exports['default'] = shallowEqual;
+module.exports = exports['default'];

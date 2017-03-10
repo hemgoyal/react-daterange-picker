@@ -1,42 +1,40 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
 });
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _BemMixin = require('./utils/BemMixin');
+var _utilsBemMixin = require('./utils/BemMixin');
 
-var _BemMixin2 = _interopRequireDefault(_BemMixin);
+var _utilsBemMixin2 = _interopRequireDefault(_utilsBemMixin);
 
 var _reactAddonsPureRenderMixin = require('react-addons-pure-render-mixin');
 
 var _reactAddonsPureRenderMixin2 = _interopRequireDefault(_reactAddonsPureRenderMixin);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Legend = _react2.default.createClass({
+var Legend = _react2['default'].createClass({
   displayName: 'Legend',
 
-  mixins: [_BemMixin2.default, _reactAddonsPureRenderMixin2.default],
+  mixins: [_utilsBemMixin2['default'], _reactAddonsPureRenderMixin2['default']],
 
   propTypes: {
-    selectedLabel: _react2.default.PropTypes.string.isRequired,
-    stateDefinitions: _react2.default.PropTypes.object.isRequired
+    selectedLabel: _react2['default'].PropTypes.string.isRequired,
+    stateDefinitions: _react2['default'].PropTypes.object.isRequired
   },
 
   render: function render() {
-    var _props = this.props,
-        selectedLabel = _props.selectedLabel,
-        stateDefinitions = _props.stateDefinitions;
+    var _props = this.props;
+    var selectedLabel = _props.selectedLabel;
+    var stateDefinitions = _props.stateDefinitions;
 
     var items = [];
-    var name = void 0;
-    var def = void 0;
-    var style = void 0;
+    var name = undefined;
+    var def = undefined;
+    var style = undefined;
 
     for (name in stateDefinitions) {
       def = stateDefinitions[name];
@@ -44,11 +42,11 @@ var Legend = _react2.default.createClass({
         style = {
           backgroundColor: def.color
         };
-        items.push(_react2.default.createElement(
+        items.push(_react2['default'].createElement(
           'li',
           { className: this.cx({ element: 'LegendItem' }), key: name },
-          _react2.default.createElement('span', { className: this.cx({ element: 'LegendItemColor' }), style: style }),
-          _react2.default.createElement(
+          _react2['default'].createElement('span', { className: this.cx({ element: 'LegendItemColor' }), style: style }),
+          _react2['default'].createElement(
             'span',
             { className: this.cx({ element: 'LegendItemLabel' }) },
             def.label
@@ -57,14 +55,14 @@ var Legend = _react2.default.createClass({
       }
     }
 
-    return _react2.default.createElement(
+    return _react2['default'].createElement(
       'ul',
       { className: this.cx() },
-      _react2.default.createElement(
+      _react2['default'].createElement(
         'li',
         { className: this.cx({ element: 'LegendItem' }) },
-        _react2.default.createElement('span', { className: this.cx({ element: 'LegendItemColor', modifiers: { 'selection': true } }) }),
-        _react2.default.createElement(
+        _react2['default'].createElement('span', { className: this.cx({ element: 'LegendItemColor', modifiers: { 'selection': true } }) }),
+        _react2['default'].createElement(
           'span',
           { className: this.cx({ element: 'LegendItemLabel' }) },
           selectedLabel
@@ -75,4 +73,5 @@ var Legend = _react2.default.createClass({
   }
 });
 
-exports.default = Legend;
+exports['default'] = Legend;
+module.exports = exports['default'];
