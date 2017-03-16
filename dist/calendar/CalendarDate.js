@@ -208,13 +208,16 @@ var CalendarDate = _react2['default'].createClass({
 
     var highlightModifier = undefined;
     var selectionModifier = undefined;
+    var selectionClass = '';
 
     if (isSelectedDate || isSelectedRangeStart && isSelectedRangeEnd || isHighlightedRangeStart && isHighlightedRangeEnd) {
       selectionModifier = 'single';
     } else if (isSelectedRangeStart || isHighlightedRangeStart) {
       selectionModifier = 'start';
+      selectionClass = " DateRangePicker__FullDateStates--start ";
     } else if (isSelectedRangeEnd || isHighlightedRangeEnd) {
       selectionModifier = 'end';
+      selectionClass = " DateRangePicker__FullDateStates--end ";
     } else if (isInSelectedRange || isInHighlightedRange) {
       selectionModifier = 'segment';
     }
@@ -266,7 +269,7 @@ var CalendarDate = _react2['default'].createClass({
         _react2['default'].createElement(_CalendarDatePeriod2['default'], { period: 'am', color: amColor }),
         _react2['default'].createElement(_CalendarDatePeriod2['default'], { period: 'pm', color: pmColor })
       ),
-      numStates === 1 && _react2['default'].createElement('div', { className: this.cx({ element: "FullDateStates" }), style: style }),
+      numStates === 1 && _react2['default'].createElement('div', { className: this.cx({ element: "FullDateStates" + selectionClass }), style: style }),
       _react2['default'].createElement(
         'span',
         { className: this.cx({ element: "DateLabel" }) },
