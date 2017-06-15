@@ -100,13 +100,10 @@ var CalendarDate = _react2['default'].createClass({
   },
 
   touchEnd: function touchEnd() {
-    console.log('beforeend...');
 
     if(!dragging) {
 
       event.preventDefault();
-
-      console.log('end...');
 
       this.props.onHighlightDate(this.props.date);
       this.props.onSelectDate(this.props.date);
@@ -123,8 +120,6 @@ var CalendarDate = _react2['default'].createClass({
   touchStart: function touchStart(event) {
     if(!dragging){
       event.preventDefault();
-      console.log('start')
-      event.preventDefault();
       this.setState({
         mouseDown: true
       });
@@ -133,6 +128,7 @@ var CalendarDate = _react2['default'].createClass({
   },
   mouseEnter: function mouseEnter() {
     this.props.onHighlightDate(this.props.date);
+    this.props.onSelectDate(this.props.date);
   },
   touchMove: function touchMove() {
     dragging = true;

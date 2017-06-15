@@ -309,7 +309,13 @@ var DateRangePicker = _react2['default'].createClass({
     var selectedStartDate = this.state.selectedStartDate;
     if (selectionType === 'range') {
       if (selectedStartDate) {
-        this.completeRangeSelection();
+        datePair = _immutable2['default'].List.of(selectedStartDate, date).sortBy(function (d) {
+          return d.unix();
+        });
+        range = _moment2['default'].range(datePair.get(0), datePair.get(1));
+        forwards = range.start.unix() === selectedStartDate.unix();
+        range = this.sanitizeRange(range, forwards);
+        this.completeRangeSelection(range);
       } else if (!this.isDateDisabled(date) && this.isDateSelectable(date)) {
         this.startRangeSelection(date);
         if (this.props.singleDateRange) {
@@ -390,8 +396,12 @@ var DateRangePicker = _react2['default'].createClass({
     }
   },
 
-  completeRangeSelection: function completeRangeSelection() {
-    var range = this.state.highlightedRange;
+  completeRangeSelection: function completeRangeSelection(dateRange) {
+    if (this.state.highlightedRange) {
+      var range = this.state.highlightedRange;
+    } else {
+      var range = dateRange;
+    }
 
     if (range && (!range.start.isSame(range.end, 'day') || this.props.singleDateRange)) {
       this.setState({
