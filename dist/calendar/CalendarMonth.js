@@ -44,7 +44,7 @@ var _utilsPureRenderMixin2 = _interopRequireDefault(_utilsPureRenderMixin);
 
 var lang = (0, _moment2['default'])().localeData();
 
-var WEEKDAYS = _immutable2['default'].List(lang._weekdays).zip(_immutable2['default'].List(lang._weekdaysShort));
+var WEEKDAYS = (_immutable2['default'].List(lang._weekdays).zip((_immutable2['default'].List(lang._weekdaysShort)))).zip(_immutable2['default'].List(['S', 'M', 'T', 'W', 'T', 'F', 'S', 'S']));
 var MONTHS = _immutable2['default'].List(lang._months);
 
 var CalendarMonth = _react2['default'].createClass({
@@ -130,7 +130,7 @@ var CalendarMonth = _react2['default'].createClass({
         { className: this.cx({ element: 'WeekdayHeading' }), key: weekday, scope: 'col' },
         _react2['default'].createElement(
           'abbr',
-          { title: weekday[0] },
+          { title: weekday[0][0] },
           weekday[1]
         )
       );
