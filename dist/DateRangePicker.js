@@ -424,7 +424,7 @@ var DateRangePicker = _react2['default'].createClass({
   },
 
   getMonthDate: function getMonthDate() {
-    return (0, _moment2['default'])(new Date(this.state.year, this.state.month, 1));
+    return (0, _moment2['default'])(new Date(_moment(this.props.minimumDate).year(), _moment(this.props.minimumDate).month(), 1));
   },
 
   canMoveBack: function canMoveBack() {
