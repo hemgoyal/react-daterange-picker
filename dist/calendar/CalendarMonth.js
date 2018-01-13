@@ -44,7 +44,7 @@ var _utilsPureRenderMixin2 = _interopRequireDefault(_utilsPureRenderMixin);
 
 var lang = (0, _moment2['default'])().localeData();
 
-var WEEKDAYS = (_immutable2['default'].List(lang._weekdays).zip((_immutable2['default'].List(lang._weekdaysShort)))).zip(_immutable2['default'].List(['S', 'M', 'T', 'W', 'T', 'F', 'S', 'S']));
+var WEEKDAYS = _immutable2['default'].List(lang._weekdays).zip(_immutable2['default'].List(lang._weekdaysShort));
 var MONTHS = _immutable2['default'].List(lang._months);
 
 var CalendarMonth = _react2['default'].createClass({
@@ -122,6 +122,8 @@ var CalendarMonth = _react2['default'].createClass({
     var firstOfWeek = this.props.firstOfWeek;
 
     var indices = _immutable2['default'].Range(firstOfWeek, 7).concat(_immutable2['default'].Range(0, firstOfWeek));
+    var localeWeekDaysShort = _moment2.default.weekdaysShort();
+    var localeWeekDays = _moment2.default.weekdays();
 
     var headers = indices.map((function (index) {
       var weekday = WEEKDAYS.get(index);
@@ -130,8 +132,8 @@ var CalendarMonth = _react2['default'].createClass({
         { className: this.cx({ element: 'WeekdayHeading' }), key: weekday, scope: 'col' },
         _react2['default'].createElement(
           'abbr',
-          { title: weekday[0][0] },
-          weekday[1]
+          { title: localeWeekDays[index] },
+          localeWeekDaysShort[index]
         )
       );
     }).bind(this));
